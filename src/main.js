@@ -1,26 +1,33 @@
 import React, {Component} from 'react';
 import {
-  Text,
-  View,
-  StyleSheet
-} from 'react-native';
+  Navigator
+} from 'react-native-deprecated-custom-components';
 
-module.exports = React.createClass({
+
+import Events from './components/events';
+
+const routes = {
+  events: Events
+}
+
+export default class Main extends Component {
+
   render () {
     return (
-      <View style={styles.container}>
-        <Text>
-          Event Expert
-        </Text>
-      </View>
+      <Navigator
+        initialRoute={ {name: 'events'} }
+        renderScene={this.renderScene}
+      />
     )
   }
-})
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+  renderScene(route, navigator) {
+    let Component = routes[route.name];
+    return (
+      <Component
+        navigator={navigator}
+      />
+    )
   }
-})
+}
+
