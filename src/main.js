@@ -25,9 +25,15 @@ export default class Main extends Component {
 
   renderScene(route, navigator) {
     let Component = routes[route.name];
+    let {title, description, url, img} = route;
+
     return (
       <Component
         navigator={navigator}
+        title={title}
+        description={description}
+        url={url}
+        img={img}
       />
     )
   }

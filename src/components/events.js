@@ -70,6 +70,16 @@ export default class Events extends Component {
     }
   }
 
+  detail (rowData) {
+    this.props.navigator.push({
+      name: 'eventDetail',
+      title: rowData.name.text,
+      description: rowData.description.text,
+      url: rowData.url,
+      img: rowData.logo.url
+    })
+  }
+
   renderRow(rowData) {
     const defaultImg = 'https://cdn.pixabay.com/photo/2013/11/20/09/35/question-mark-213671_960_720.jpg';
     let img = rowData.logo ? rowData.logo.url : defaultImg;
@@ -89,9 +99,7 @@ export default class Events extends Component {
             }
           </Text>
           <TouchableOpacity
-            onPress={ () => this.props.navigator.push({
-              name: 'eventDetail'
-            })}
+            onPress={ () => this.detail(rowData)}
           >
             <Text style={styles.link}>
               More Details
