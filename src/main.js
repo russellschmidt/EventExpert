@@ -5,9 +5,11 @@ import {
 
 
 import Events from './components/events';
+import EventDetail from './components/event_detail';
 
 const routes = {
-  events: Events
+  events: Events,
+  eventDetail: EventDetail,
 }
 
 export default class Main extends Component {

@@ -18,7 +18,7 @@ const EVENT_SEARCH = '/events/search/';
 const MY_TOKEN = 'Bearer 734BI5DINA5X67M3P5RR';
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1!==r2});
 
-export default class Main extends Component {
+export default class Events extends Component {
   constructor() {
     super();
 
@@ -88,9 +88,15 @@ export default class Main extends Component {
               rowData.name.text
             }
           </Text>
-          <Text style={styles.rowText}>
-            More Data
-          </Text>
+          <TouchableOpacity
+            onPress={ () => this.props.navigator.push({
+              name: 'eventDetail'
+            })}
+          >
+            <Text style={styles.link}>
+              More Details
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     )
@@ -199,5 +205,12 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     fontFamily: (Platform.OS === 'ios') ? 'HelveticaNeue-CondensedBold' : 'Roboto',
     fontSize: (Platform.OS === 'android') ? 16 : 14,
+  },
+  link: {
+    textAlign: 'left',
+    color: '#22F',
+    paddingLeft: 10,
+    fontFamily: (Platform.OS === 'ios') ? 'HelveticaNeue' : 'Roboto',
+    fontSize: (Platform.OS === 'android') ? 14 : 12,
   },
 })
